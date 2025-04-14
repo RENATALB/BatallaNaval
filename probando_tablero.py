@@ -15,6 +15,7 @@ for fila in (tablero):
 def posicion_barcos(tablero, CANTIDAD_BARCOS):
     colocados = 0
     while colocados < CANTIDAD_BARCOS: #mientras que los barcos colocados sean menos de 6
+
         fila = random.randint(0, TAMAÑO_TABLERO - 1)
         columna = random.randint(0, TAMAÑO_TABLERO - 1)
         # pongo -1 ya que 0 a 5 (como dice tamaño_tablero = 5) en realidad, serian 6, 
@@ -23,10 +24,12 @@ def posicion_barcos(tablero, CANTIDAD_BARCOS):
         if not tablero[fila][columna]:
             tablero[fila][columna] = True
             #si no hay nada en esa casilla, entonces se coloca un barco y se vuelve true
+
             colocados += 1 
             #se le suma un colocado hasta llegar al menor mas alto de CANTIDAD_BARCOS (o sea, 4)
             #sino ejecutamos esta linea, el bucle se repitiria por siempre
 
 posicion_barcos(tablero, CANTIDAD_BARCOS)
+
 for fila in (tablero):
     print(fila)
