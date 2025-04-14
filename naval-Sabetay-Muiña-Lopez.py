@@ -32,16 +32,33 @@ aciertos:int = 0
 fallos:int = 0
 
 for disparos in range(1, CANTIDAD_DISPAROS + 1):
-    x = int(input("X: ")) - 1 #Este input no puede estar suelto, deberia estar en el bucle FOR porque se repite
-    y = int(input("Y: ")) - 1 #Este input no puede estar suelto, deberia estar en el bucle FOR porque se repite
-    if tablero [x] [y]:
+    x = int(input("X: ")) - 1
+    y = int(input("Y: ")) - 1
+    if tablero[x][y] == True:  # Si hay un barco en la casilla
         print("¡Barco hundido!💥")
         aciertos += 1
-        tablero [x] [y] = False
-    else:
+        tablero[x][y] = "💥"  # Marcar como barco hundido
+        if aciertos == CANTIDAD_BARCOS:
+            print("¡Todos los barcos han sido hundidos! 🎉")
+            break
+    elif tablero[x][y] == False:  # Si no hay nada en la casilla
         print("No hay barcos en esta posición 💧")
+        tablero[x][y] = "💧"  # Marcar como agua
         fallos += 1
+    else:
+        print("Ya disparaste en esta posición.")
 
 print("Juego terminado")
-print("Aciertos: {aciertos}")
-print("Fallos: {fallos}")
+print(f"Aciertos: {aciertos}")
+print(f"Fallos: {fallos}")
+print("Así quedó el tablero:")
+
+# Imprimir el tablero con los emojis correspondientes
+for fila in tablero:
+    print(" ".join(
+        "💥" if casilla == "💥" else  # Barco hundido
+        "💧" if casilla == "💧" else  # Agua
+        "🚢" if casilla == True else  # Barco no hundido
+        "💧"  # Agua por defecto
+        for casilla in fila
+    ))  #Estas últimas lineas de código nos ayudó CoPilot para reemplazar los true y false por emojis
