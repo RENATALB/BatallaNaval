@@ -1,6 +1,7 @@
 #barcos en una sola coordenada, no tienen tamaño
 #ESTE NO ES EL ARCHIVO DE BONUS DEFINITIVO, HAY QUE CAMBIAR COSAS
 #TODO: lista de lista booleana, que las coordenadas no sean de 0-7 sino 1-8, ver lo de constantes
+#FIXME: LPM ES UN QUILOMBO ESTE ARCHIVO ME ACABO DE AVIVAR
 
 TAMAÑO = 8 #8X8
 NUM_BARCOS = 3 #cantidad de barcos por jugador

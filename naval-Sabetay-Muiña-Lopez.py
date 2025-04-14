@@ -1,9 +1,9 @@
-import random
+import random #para que se hagan barcos en lugares random, hay que usar la funcion random.randint
 
-tablero = []
+tablero = [] #el tablero al ser una lista de listas bool, no puede estar vacia
 
 CANTIDAD_DISPAROS: int = 10
-CANTIDAD_BARCOS: int = 5 # Puse la varriable en mayuscula para yo entender que es una constante
+CANTIDAD_BARCOS: int = 5 # Puse la variable en mayuscula para yo entender que es una constante
 """
 Tablero: 5x5
 Persona vs computadora
@@ -12,5 +12,5 @@ Persona vs computadora
 """
 
 
-    x = int(input("X: "))
-    y = int(input("Y: "))
+x = int(input("X: ")) #Este input no puede estar suelto, deberia estar en el bucle FOR porque se repite
+y = int(input("Y: ")) #Este input no puede estar suelto, deberia estar en el bucle FOR porque se repite
