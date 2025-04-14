@@ -15,8 +15,7 @@ TAMAÑO_TABLERO = int(input("Tamaño tablero: "))
 #Se pone false ya que no hay nada ahi, es el predeterminado del tablero
 tablero:list = [[False for _ in range(TAMAÑO_TABLERO)] for _ in range(TAMAÑO_TABLERO)]
 
-#x = int(input("X: ")) #Este input no puede estar suelto, deberia estar en el bucle FOR porque se repite
-#y = int(input("Y: ")) #Este input no puede estar suelto, deberia estar en el bucle FOR porque se repite
+
 
 def generadorBarcos(tablero, CANTIDAD_BARCOS): # Esta función es para posicionar de manera aleatoria los barcos que se deben adivinar
     barcosPosicionados:int = 0
@@ -28,3 +27,21 @@ def generadorBarcos(tablero, CANTIDAD_BARCOS): # Esta función es para posiciona
             barcosPosicionados += 1
 
 generadorBarcos(tablero, CANTIDAD_BARCOS)
+
+aciertos:int = 0
+fallos:int = 0
+
+for disparos in range(1, CANTIDAD_DISPAROS + 1):
+    x = int(input("X: ")) - 1 #Este input no puede estar suelto, deberia estar en el bucle FOR porque se repite
+    y = int(input("Y: ")) - 1 #Este input no puede estar suelto, deberia estar en el bucle FOR porque se repite
+    if tablero [x] [y]:
+        print("¡Barco hundido!💥")
+        aciertos += 1
+        tablero [x] [y] = False
+    else:
+        print("No hay barcos en esta posición 💧")
+        fallos += 1
+
+print("Juego terminado")
+print("Aciertos: {aciertos}")
+print("Fallos: {fallos}")
