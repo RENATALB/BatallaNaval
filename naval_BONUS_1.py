@@ -18,6 +18,7 @@ tablero:list = [[False for _ in range(TAMAÑO_TABLERO)] for _ in range(TAMAÑO_T
 
 
 def generadorBarcos(tablero, CANTIDAD_BARCOS): # Esta función es para posicionar de manera aleatoria los barcos que se deben adivinar
+    """
     barcosPosicionados:int = 0
     while barcosPosicionados < CANTIDAD_BARCOS:
         x = random.randint(0, TAMAÑO_TABLERO - 1)
@@ -25,7 +26,15 @@ def generadorBarcos(tablero, CANTIDAD_BARCOS): # Esta función es para posiciona
         if not tablero [x] [y]:
             tablero [x] [y] = True # Si esta casilla del tablero no está ocupada, se pone el barco y se convierte en true
             barcosPosicionados += 1
-
+    """
+    barcosPosicionados:int = 0
+    while barcosPosicionados < CANTIDAD_BARCOS:
+        print("Posicionamiento de los barcos:")
+        x = int(input("Coordenada X: ")) - 1
+        y = int(input("Coordenada Y: ")) - 1 # Esto para que el usuario pueda ingresar las coordenadas de donde quiere posicionar los barcos.
+        if not tablero [x] [y]:
+            tablero [x] [y] = True # Si esta casilla del tablero no está ocupada, se pone el barco y se convierte en true
+            barcosPosicionados += 1
 generadorBarcos(tablero, CANTIDAD_BARCOS)
 
 aciertos:int = 0
