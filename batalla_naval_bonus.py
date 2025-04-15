@@ -23,8 +23,8 @@ def colocar_barcos(jugador):
     barcos = []
     while len(barcos) < NUM_BARCOS:
         try:
-            fila = int(input(f"Fila del barco #{len(barcos)+1} (0-{TAMAÑO-1}): "))
-            columna = int(input(f"Columna del barco #{len(barcos)+1} (0-{TAMAÑO-1}): "))
+            fila = int(input(f"Fila del barco #{len(barcos)+1} (1-{TAMAÑO}): "))-1
+            columna = int(input(f"Columna del barco #{len(barcos)+1} (1-{TAMAÑO}): "))-1
 
         #Si esta todo bien, se guarda como una TUPLA
             if (0 <= fila < TAMAÑO and 0 <= columna < TAMAÑO):
@@ -47,8 +47,8 @@ def turno(jugador, disparos, barcos_enemigos):
     # Valida si el disparo es dentro del tablero o es invalido, o si ya disparó
     while True:
         try:
-            fila = int(input("Adivina fila: "))
-            columna = int(input("Adivina columna: "))
+            fila = int(input("Adivina fila: "))-1
+            columna = int(input("Adivina columna: "))-1
             if not (0 <= fila < TAMAÑO and 0 <= columna < TAMAÑO):
                 print("Fuera de rango.")
                 continue
