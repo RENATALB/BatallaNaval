@@ -18,6 +18,7 @@ tablero:list = [[False for _ in range(TAMAÑO_TABLERO)] for _ in range(TAMAÑO_T
 
 
 def generadorBarcos(tablero, CANTIDAD_BARCOS): # Esta función es para posicionar de manera aleatoria los barcos que se deben adivinar
+    """
     barcosPosicionados:int = 0
     while barcosPosicionados < CANTIDAD_BARCOS:
         x = random.randint(0, TAMAÑO_TABLERO - 1)
@@ -25,28 +26,31 @@ def generadorBarcos(tablero, CANTIDAD_BARCOS): # Esta función es para posiciona
         if not tablero [x] [y]:
             tablero [x] [y] = True # Si esta casilla del tablero no está ocupada, se pone el barco y se convierte en true
             barcosPosicionados += 1
-
+    """
+    barcosPosicionados:int = 0
+    while barcosPosicionados < CANTIDAD_BARCOS:
+        print("Posicionamiento de los barcos:")
+        x = int(input("Coordenada X: ")) - 1
+        y = int(input("Coordenada Y: ")) - 1 # Esto para que el usuario pueda ingresar las coordenadas de donde quiere posicionar los barcos.
+        if not tablero [x] [y]:
+            tablero [x] [y] = True # Si esta casilla del tablero no está ocupada, se pone el barco y se convierte en true
+            barcosPosicionados += 1
 generadorBarcos(tablero, CANTIDAD_BARCOS)
 
 aciertos:int = 0
 fallos:int = 0
 
 for disparos in range(1, CANTIDAD_DISPAROS + 1):
-    x = int(input("X: ")) - 1
-    y = int(input("Y: ")) - 1
-    if tablero[x][y] == True:  # Si hay un barco en la casilla
+    x = int(input("X: ")) - 1 #Este input no puede estar suelto, deberia estar en el bucle FOR porque se repite
+    y = int(input("Y: ")) - 1 #Este input no puede estar suelto, deberia estar en el bucle FOR porque se repite
+    if tablero [x] [y]:
         print("¡Barco hundido!💥")
         aciertos += 1
-        tablero[x][y] = "💥"  # Marcar como barco hundido
-        if aciertos == CANTIDAD_BARCOS:
-            print("¡Todos los barcos han sido hundidos! 🎉")
-            break
-    elif tablero[x][y] == False:  # Si no hay nada en la casilla
-        print("No hay barcos en esta posición 💧")
-        tablero[x][y] = "💧"  # Marcar como agua
-        fallos += 1
+        tablero [x] [y] = False
     else:
-        print("Ya disparaste en esta posición.")
+        print("No hay barcos en esta posición 💧")
+        fallos += 1
 
 print("Juego terminado")
 print(f"Aciertos: {aciertos}")
+print(f"Fallos: {fallos}")

@@ -3,7 +3,7 @@
 #TODO: lista de lista booleana, que las coordenadas no sean de 0-7 sino 1-8, ver lo de constantes
 #FIXME: LPM ES UN QUILOMBO ESTE ARCHIVO ME ACABO DE AVIVAR
 
-TAMAÑO = 8 #8X8
+TAMAÑO = int(input("Tamaño tablero: "))
 NUM_BARCOS = 3 #cantidad de barcos por jugador
 
 #tablero vacio, lista de listas. Cada "O" representa una celda del mar
@@ -23,8 +23,8 @@ def colocar_barcos(jugador):
     barcos = []
     while len(barcos) < NUM_BARCOS:
         try:
-            fila = int(input(f"Fila del barco #{len(barcos)+1} (0-{TAMAÑO-1}): "))
-            columna = int(input(f"Columna del barco #{len(barcos)+1} (0-{TAMAÑO-1}): "))
+            fila = int(input(f"Fila del barco #{len(barcos)+1} (1-{TAMAÑO}): "))-1
+            columna = int(input(f"Columna del barco #{len(barcos)+1} (1-{TAMAÑO}): "))-1
 
         #Si esta todo bien, se guarda como una TUPLA
             if (0 <= fila < TAMAÑO and 0 <= columna < TAMAÑO):
@@ -47,8 +47,8 @@ def turno(jugador, disparos, barcos_enemigos):
     # Valida si el disparo es dentro del tablero o es invalido, o si ya disparó
     while True:
         try:
-            fila = int(input("Adivina fila: "))
-            columna = int(input("Adivina columna: "))
+            fila = int(input("Adivina fila: "))-1
+            columna = int(input("Adivina columna: "))-1
             if not (0 <= fila < TAMAÑO and 0 <= columna < TAMAÑO):
                 print("Fuera de rango.")
                 continue
@@ -68,7 +68,7 @@ def turno(jugador, disparos, barcos_enemigos):
             print("💥 ¡Todos los barcos enemigos han sido hundidos!") #si no hay barcos, hace return True para ejecutar el bucle while y terminar el juego
             return True
     else:
-        disparos[fila][columna] = "X"
+        disparos[fila][columna] = "🌊"
         print("💦 Agua.") #si no adivina, return False hace que alterne el turno
     return False
 
