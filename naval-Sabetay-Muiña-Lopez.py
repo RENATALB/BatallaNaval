@@ -48,5 +48,16 @@ for disparos in range(1, CANTIDAD_DISPAROS + 1):
     else:
         print("Ya disparaste en esta posición.")
 
+# Imprimir el tablero con los emojis correspondientes
+for fila in tablero:
+    print(" ".join(
+        "💥" if casilla == "💥" else  # Barco hundido
+        "💧" if casilla == "💧" else  # Agua
+        "🚢" if casilla == True else  # Barco no hundido
+        "💧"  # Agua por defecto
+        for casilla in fila
+    ))  #Estas últimas lineas de código nos ayudó CoPilot para reemplazar los true y false por emojis
+
 print("Juego terminado")
 print(f"Aciertos: {aciertos}")
+print(f"Fallos: {fallos}")
